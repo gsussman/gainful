@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.timepicker.css' %} " />
+{% endblock %}
+{% block content %}
+	<h2>Schedule New Message</h2>
+	<form method="POST" enctype="multipart/form-data">
+
+ {% csrf_token %}
+
+
+    {{ form.as_p }}
+
+
+	<button type="submit" class="c-btn c-btn--primary c-btn--big">Submit</button>
+	</form>
+
+{% endblock %}
+
+{% block page_scripts %}
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery.timepicker.js' %} "></script>
+<script>
+  $(function() {
+    $( "#id_date_0" ).datepicker();
+    $('#id_date_1').timepicker({ 
+    	timeFormat: 'G:i',
+
+});
+  });
+</script>
+
+{% endblock %}

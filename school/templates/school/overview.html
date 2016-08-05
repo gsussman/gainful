@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Messages Scheduled</h2>
+{% if messages_unsent %}
+		<table class="c-table">
+		<thead>
+		  <tr>
+		    <th>Message</th>
+		    <th>Date</th>
+		    <th>Groups</th>
+		    <th>Individuals</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{% for message in messages_unsent %}
+			  <tr>
+			    <td>{{message.message}}</td>
+			    <td>{{message.date}}</td>
+			{% for item in message.audience_grp.all %}
+			    <td>{{item}}</td>
+			{% endfor %}
+			{% for ind in message.audience_ind.all %}
+			    <td>{{ind}}</td>
+			{% endfor %}
+			  </tr>
+		{% endfor %}
+		</tbody>
+		</table>
+
+
+
+
+{% else %}
+<p>No messages scheduled</p>
+<a href="/scheduler/">Schedule new message</a>
+{% endif %}
+
+<hr />
+
+<h2>Messages Sent</h2>
+{% if messages_sent %}
+
+		<table class="c-table">
+		<thead>
+		  <tr>
+		    <th>Message</th>
+		    <th>Date</th>
+		    <th>Groups</th>
+		    <th>Individuals</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{% for message in messages_sent %}
+			  <tr>
+			    <td>{{message.message}}</td>
+			    <td>{{message.date}}</td>
+			{% for item in message.audience_grp.all %}
+			    <td>{{item}}</td>
+			{% endfor %}
+			{% for ind in message.audience_ind.all %}
+			    <td>{{ind}}</td>
+			{% endfor %}
+			  </tr>
+		{% endfor %}
+		</tbody>
+		</table>
+
+{% else %}
+<p>No messages already sent</p>
+
+{% endif %}
+
+{% endblock %}

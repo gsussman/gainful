@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<h2 class="u-l-fl">Group Edit</h2>
+
+<div class="u-pad-s">
+	<div class="page-menu u-l-fr">
+				  <form method="POST" enctype="multipart/form-data">
+ {% csrf_token %}
+
+    {{ form.as_p }}
+
+		     <div class="clearfix">
+		         <div class="u-l-fr">
+			        <button type="submit" class="c-btn c-btn--primary">Create</button>
+			     </div>
+		     </div>
+		  </form>
+	</div>
+</div>
+
+{% endblock %}
