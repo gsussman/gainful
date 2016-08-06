@@ -2,6 +2,15 @@
 {% load staticfiles %}
 {% block style %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.timepicker.css' %} " />
+  <style>
+
+.errorClass {
+    outline:none;
+    border-color:red;
+    box-shadow:0 0 10px red;
+}
+
+  </style>
 {% endblock %}
 {% block content %}
 	<h2>Schedule New Message</h2>
@@ -27,9 +36,13 @@
     $( "#id_date_0" ).datepicker();
     $('#id_date_1').timepicker({ 
     	timeFormat: 'G:i',
-
+    });
+    $( "#id_message" ).on('input', function() {
+    	if ($(this).val().length>=160) {
+        	$("#id_message").addClass('errorClass');}
+        else  {$("#id_message").removeClass('errorClass');}
 });
-  });
+});
 </script>
 
 {% endblock %}
