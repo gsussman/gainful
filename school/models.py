@@ -23,8 +23,8 @@ class Group(models.Model):
 class Message(models.Model):
  date = models.DateTimeField()
  message = models.CharField(max_length=255, null=True)
- audience_ind = models.ManyToManyField(Student, blank = True)
- audience_grp =  models.ManyToManyField(Group, blank = True)
+ audience_Individuals = models.ManyToManyField(Student, blank = True)
+ audience_Groups =  models.ManyToManyField(Group, blank = True)
 
  def __unicode__(self):
   return self.message
