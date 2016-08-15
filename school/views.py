@@ -72,7 +72,7 @@ def scheduler(request):
 			message = form.cleaned_data['message']
 			email = 'Date: %s, Individuals: %s, Groups: %s, Message: %s' % (date, ind, grp, message)
 			from_email = 'gainfulio@gmail.com'
-			send_mail(subject, email, from_email, ['gene.sussman@gmail.com'])
+			send_mail(subject, email, from_email, ['gene.sussman@gmail.com', 'alicia.morga@gmail.com'])
 			return redirect('overview')
 	return render(request, 'school/scheduler.html', {
     'form': form,
