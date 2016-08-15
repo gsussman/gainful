@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Student, Group, Message
 from .forms import StudentForm, GroupForm, MessageForm
 from datetime import datetime, timedelta
+from django.core.mail import send_mail, BadHeaderError
 
 # Create your views here.
 def overview(request):
@@ -58,6 +59,20 @@ def scheduler(request):
 		print form
     	if form.is_valid():
 			form.save()
+			subject = 'New Message Scheduled'
+			date = form.cleaned_data['date']
+			if form.cleaned_data['audience_Individuals']:
+				ind = form.cleaned_data['audience_Individuals']
+			else:
+				ind = 'No Individuals'
+			if form.cleaned_data['audience_Groups']:
+				grp = form.cleaned_data['audience_Groups']
+			else:
+				grp = 'No Groups'
+			message = form.cleaned_data['message']
+			email = 'Date: %s, Individuals: %s, Groups: %s, Message: %s' % (date, ind, grp, message)
+			from_email = 'gainfulio@gmail.com'
+			send_mail(subject, email, from_email, ['gene.sussman@gmail.com'])
 			return redirect('overview')
 	return render(request, 'school/scheduler.html', {
     'form': form,

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'school',
+    'lockdown',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'lockdown.middleware.LockdownMiddleware',
 ]
 
 ROOT_URLCONF = 'gainful.urls'
@@ -120,3 +122,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOCKDOWN_ENABLED = True
+LOCKDOWN_PASSWORDS = ('letmein', 'beta', 'foothills')
+
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "gainfulio@gmail.com"
+EMAIL_HOST_PASSWORD = '1gainful1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

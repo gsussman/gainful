@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Coming soon...{% endblock %}
+
+{% block content %}
+<div id="lockdown">
+  <h2>Access Gainful</h2>
+
+  <p>Login below to access Gainful Messaging Platform.</p>
+
+  {% if form %}
+  <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <p><input type="submit" value="Submit" /></p>
+  </form>
+  {% endif %}
+
+</div>
+{% endblock %}
