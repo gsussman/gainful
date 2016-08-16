@@ -18,10 +18,10 @@
 			  <tr>
 			    <td>{{message.message}}</td>
 			    <td>{{message.date}}</td>
-			{% for item in message.audience_grp.all %}
+			{% for item in message.audience_Groups.all %}
 			    <td>{{item}}</td>
 			{% endfor %}
-			{% for ind in message.audience_ind.all %}
+			{% for ind in message.audience_Individuals.all %}
 			    <td>{{ind}}</td>
 			{% endfor %}
 			  </tr>
