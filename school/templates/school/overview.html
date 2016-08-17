@@ -84,12 +84,20 @@
 			  <tr>
 			    <td>{{message.message}}</td>
 			    <td>{{message.date}}</td>
-			{% for item in message.audience_grp.all %}
-			    <td>{{item}}</td>
-			{% endfor %}
-			{% for ind in message.audience_ind.all %}
-			    <td>{{ind}}</td>
-			{% endfor %}
+			{% if message.audience_Groups.all %}
+			<td>{% for item in message.audience_Groups.all %}
+			    {{item}}
+			{% endfor %}</td>
+			{% else %}
+			<td>No Groups Selected</td>
+			{% endif %}
+			{% if message.audience_Individuals.all %}
+			<td>{% for ind in message.audience_Individuals.all %}
+			    {{ind}}
+			{% endfor %}</td>
+			{% else %}
+			<td>No Individuals Selected</td>
+			{% endif %}
 			  </tr>
 		{% endfor %}
 		</tbody>
