@@ -1,5 +1,26 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+
+      {% block nav %}
+      <ul class="c-tab-nav" role="tablist">
+        <li class="c-tab-nav__tab brand">
+          <a href=""><img src="{% static 'img/gainful_logo.png' %}" width=50></a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/overview">Overview</a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/scheduler">Message Scheduler</a></button>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/students">Students</a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab is-active">
+          <a href="/groups">Groups</a>
+        </li>
+      </ul>
+      {% endblock %}
+
 {% block content %}
 
 <h2 class="u-l-fl">Group Edit</h2>

@@ -12,6 +12,27 @@
 
   </style>
 {% endblock %}
+
+      {% block nav %}
+      <ul class="c-tab-nav" role="tablist">
+        <li class="c-tab-nav__tab brand">
+          <a href=""><img src="{% static 'img/gainful_logo.png' %}" width=50></a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/overview">Overview</a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab is-active">
+          <a href="/scheduler">Message Scheduler</a></button>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/students">Students</a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/groups">Groups</a>
+        </li>
+      </ul>
+      {% endblock %}
+
 {% block content %}
 	<h2>Schedule New Message</h2>
 	<form method="POST" enctype="multipart/form-data">
@@ -36,25 +57,25 @@
   $(function() {
     $( "#id_date_0" ).datepicker();
     $('#id_date_1').timepicker({ 
-    	timeFormat: 'G:i',
+        timeFormat: 'G:i',
     });
     $('#id_date_1').attr("placeholder","Time");
     $('#id_date_0').attr("placeholder","Calendar Date");
     $( "#id_message" ).on('input', function() {
-    	if ($(this).val().length>160) {
-        	$("#id_message").addClass('errorClass');}
+        if ($(this).val().length>160) {
+            $("#id_message").addClass('errorClass');}
         else  {$("#id_message").removeClass('errorClass');}
 });
 
 $('#id_message').keyup(function () {
     var left = 160 - $(this).val().length;
     if (left < 0) {
-            $(".helptext").css('color', 'red');
+            $(".countdown").css('color', 'red');
         } else {
-            $(".helptext").css('color', 'inherit');
+            $(".countdown").css('color', 'inherit');
         }
     
-    $('.helptext').text(left);
+    $('.countdown').text(left);
 });
 
 });

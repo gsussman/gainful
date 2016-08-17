@@ -1,4 +1,24 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+      {% block nav %}
+      <ul class="c-tab-nav" role="tablist">
+        <li class="c-tab-nav__tab brand">
+          <a href=""><img src="{% static 'img/gainful_logo.png' %}" width=50></a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab is-active">
+          <a href="/overview">Overview</a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/scheduler">Message Scheduler</a></button>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/students">Students</a>
+        </li>
+        <li role="presentation" class="c-tab-nav__tab">
+          <a href="/groups">Groups</a>
+        </li>
+      </ul>
+      {% endblock %}
 
 {% block content %}
 
@@ -18,12 +38,20 @@
 			  <tr>
 			    <td>{{message.message}}</td>
 			    <td>{{message.date}}</td>
-			{% for item in message.audience_Groups.all %}
-			    <td>{{item}}</td>
-			{% endfor %}
-			{% for ind in message.audience_Individuals.all %}
-			    <td>{{ind}}</td>
-			{% endfor %}
+			{% if message.audience_Groups.all %}
+			<td>{% for item in message.audience_Groups.all %}
+			    {{item}}
+			{% endfor %}</td>
+			{% else %}
+			<td>No Groups Selected</td>
+			{% endif %}
+			{% if message.audience_Individuals.all %}
+			<td>{% for ind in message.audience_Individuals.all %}
+			    {{ind}}
+			{% endfor %}</td>
+			{% else %}
+			<td>No Individuals Selected</td>
+			{% endif %}
 			  </tr>
 		{% endfor %}
 		</tbody>

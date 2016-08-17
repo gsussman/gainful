@@ -10,23 +10,9 @@
   </head>
   <body>
     <nav>
-      <ul class="c-tab-nav" role="tablist">
-        <li class="c-tab-nav__tab brand">
-          <a href=""><img src="{% static 'img/gainful_logo.png' %}" width=50></a>
-        </li>
-        <li role="presentation" class="c-tab-nav__tab is-active">
-          <a href="/overview">Overview</a>
-        </li>
-        <li role="presentation" class="c-tab-nav__tab">
-          <a href="/scheduler">Message Scheduler</a></button>
-        </li>
-        <li role="presentation" class="c-tab-nav__tab">
-          <a href="/students">Students</a>
-        </li>
-        <li role="presentation" class="c-tab-nav__tab">
-          <a href="/groups">Groups</a>
-        </li>
-      </ul>
+      {% block nav %}
+
+      {% endblock %}
     </nav>  
     <div class="o-grid">
       <div class="o-grid__col o-grid__col--1-of-12">
