@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'school',
     'lockdown',
+    'django_select2',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,5 @@ EMAIL_HOST_USER = "gainfulio@gmail.com"
 EMAIL_HOST_PASSWORD = '1gainful1'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+

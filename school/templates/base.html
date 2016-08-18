@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/scooter.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     {% block style %}{% endblock %}
   </head>
   <body>
@@ -16,6 +17,7 @@
     </nav>  
     <div class="o-grid">
       <div class="o-grid__col o-grid__col--1-of-12">
+        {% block left_column %}{% endblock %}
       </div>
       <div class="o-grid__col o-grid__col--8-of-12">
         <div class="u-pad-l">
@@ -33,7 +35,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
   <script src="{% static 'js/app.js' %}"></script>
   {% block page_scripts %}{% endblock %}
 </html>

@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block style %}
+{{ form.media.js }}
   <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.timepicker.css' %} " />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
   <style>
 
 .errorClass {
     outline:none;
     border-color:red;
     box-shadow:0 0 10px red;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+label[for=id_message] {
+    display: block;
 }
 
   </style>
@@ -30,11 +43,27 @@
         <li role="presentation" class="c-tab-nav__tab">
           <a href="/groups">Groups</a>
         </li>
+        <li class="c-tab-nav__tab brand u-l-fr" style="margin-right: 20px;">
+          <a href=""><img src="{% static 'img/foothill_logo_nobg.png' %}" width=85></a>
+        </li>
       </ul>
       {% endblock %}
 
+{% block left_column %}
+
+{% endblock %}
+
 {% block content %}
+
+
 	<h2>Schedule New Message</h2>
+
+      <div class="o-grid__col o-grid__col--1-of-12">
+        <h3>To:</h3>
+      </div>
+      <div class="o-grid__col o-grid__col--8-of-12">
+
+
 	<form method="POST" enctype="multipart/form-data">
 
  {% csrf_token %}
@@ -45,12 +74,12 @@
 
 	<button type="submit" class="c-btn c-btn--primary c-btn--big">Submit</button>
 	</form>
-
+        </div>
 {% endblock %}
 
 {% block page_scripts %}
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 <script type="text/javascript" src="{% static 'js/jquery.timepicker.js' %} "></script>
 <script>
 
@@ -77,6 +106,9 @@ $('#id_message').keyup(function () {
     
     $('.countdown').text(left);
 });
+
+$('select').select2();
+
 
 });
 </script>
